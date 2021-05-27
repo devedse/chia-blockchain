@@ -35,7 +35,7 @@ cacheTimer: Dict[Path, datetime.datetime] = {}
 
 def _get_filenames(directory: Path) -> List[Path]:
     now = datetime.datetime.utcnow()
-    cacheexpirytime = datetime.timedelta(seconds=10)
+    cacheexpirytime = datetime.timedelta(minutes=60)
     if directory in cache and directory in cacheTimer and cacheTimer[directory] + cacheexpirytime > now:
         log.info(f"Getting data from cache for: {directory}")
         return cache[directory]
