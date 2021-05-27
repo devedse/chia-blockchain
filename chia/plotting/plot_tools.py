@@ -2,6 +2,7 @@ import logging
 import threading
 import time
 import traceback
+import datetime
 from dataclasses import dataclass
 from functools import reduce
 from pathlib import Path
@@ -29,8 +30,15 @@ class PlotInfo:
     file_size: int
     time_modified: float
 
+cache: Dict[Path, List[Path]] = {}
+cacheTimer: Dict[Path, datetime.datetime] = {}
 
 def _get_filenames(directory: Path) -> List[Path]:
+    now = datetime.datetime.utcnow()
+    cacheexpirytime = datetime.timedelta(seconds=10)
+    if directory in cache and directory in cacheTimer and cacheTimer[directory] + cacheexpirytime > now:
+        log.info(f"Getting data from cache for: {directory}")
+        return cache[directory]
     try:
         if not directory.exists():
             log.warning(f"Directory: {directory} does not exist.")
