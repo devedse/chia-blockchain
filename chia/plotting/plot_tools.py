@@ -57,6 +57,11 @@ def _get_filenames(directory: Path) -> List[Path]:
                 log.debug(f"Not checking subdirectory {child}, subdirectories not added by default")
     except Exception as e:
         log.warning(f"Error reading directory {directory} {e}")
+
+    log.info(f"Pushing directory list to the cache: {directory}")
+    cache[directory] = all_files
+    cacheTimer[directory] = now
+    
     return all_files
 
 
