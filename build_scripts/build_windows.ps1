@@ -56,14 +56,15 @@ Write-Output "   ---"
 Write-Output "Install chia-blockchain wheels into venv with pip"
 Write-Output "   ---"
 
-Write-Output "pip install miniupnpc"
 Set-Location -Path ".\build_scripts" -PassThru
+Get-ChildItem -Path "c:\users\runneradmin\appdata\local\pip\cache" -Filter "chiapos*.whl" -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { Copy-Item $_ ".\win_build"; Write-Host "Found $_" }
+Write-Output "pip install miniupnpc"
 pip install --no-index --find-links=.\win_build\ miniupnpc
 # Write-Output "pip install setproctitle"
 # pip install setproctitle==1.2.2
 
 Write-Output "pip install chia-blockchain"
-pip install --find-links=.\win_build\ chia-blockchain
+pip install --no-index --find-links=.\win_build\ chia-blockchain
 
 Write-Output "   ---"
 Write-Output "Use pyinstaller to create chia .exe's"
