@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - devedseperf
     tags:
         - '**'
   pull_request:
