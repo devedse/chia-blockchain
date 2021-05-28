@@ -48,7 +48,7 @@ Write-Output "Chia Version is: $env:CHIA_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
-Write-Output "Build chia-blockchain wheels"
+Write-Output "Build chiapos wheels"
 Write-Output "   ---"
 git clone https://github.com/xrobau/chiapos.git -b combined
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f ".\chiapos" --wheel-dir=.\build_scripts\win_build ".\chiapos"
@@ -58,6 +58,10 @@ Write-Output "   ---"
 Write-Output "Build chia-blockchain wheels"
 Write-Output "   ---"
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
+
+Write-Host "Finding chiapos whl"
+Get-ChildItem -Path "C:\" -Filter "chiapos*.whl" -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { Copy-Item $_ "."; Write-Host "Found $_" }
+Write-Host "Done finding wheels"
 
 Write-Output "   ---"
 Write-Output "Install chia-blockchain wheels into venv with pip"
