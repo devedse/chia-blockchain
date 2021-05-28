@@ -50,15 +50,21 @@ Write-Output "   ---"
 Write-Output "   ---"
 Write-Output "Build chia-blockchain wheels"
 Write-Output "   ---"
+git clone https://github.com/xrobau/chiapos.git -b combined
+pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f ".\chiapos" --wheel-dir=.\build_scripts\win_build ".\chiapos"
+
+
+Write-Output "   ---"
+Write-Output "Build chia-blockchain wheels"
+Write-Output "   ---"
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
 
 Write-Output "   ---"
 Write-Output "Install chia-blockchain wheels into venv with pip"
 Write-Output "   ---"
 
-Set-Location -Path ".\build_scripts" -PassThru
-Get-ChildItem -Path "c:\users\runneradmin\appdata\local\pip\cache" -Filter "chiapos*.whl" -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { Copy-Item $_ ".\win_build"; Write-Host "Found $_" }
 Write-Output "pip install miniupnpc"
+Set-Location -Path ".\build_scripts" -PassThru
 pip install --no-index --find-links=.\win_build\ miniupnpc
 # Write-Output "pip install setproctitle"
 # pip install setproctitle==1.2.2
