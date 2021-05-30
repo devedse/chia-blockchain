@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - devedseperf
+      - devedseperf2
     tags:
         - '**'
   pull_request:
