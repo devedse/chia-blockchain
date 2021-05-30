@@ -6,7 +6,7 @@ dependencies = [
     "chiabip158==1.0",  # bip158-style wallet filters
     #"chiapos==1.0.3",  # proof of space
     #"chiapos==https://github.com/pechy/chiapos/releases/download/1.0.2-dev1/chiapos-1.0.2.dev1-cp37-cp37m-manylinux2010_x86_64.whl",
-    "chiapos @ git+git://github.com/xrobau/chiapos@combined#chiapos"
+    "chiapos @ git+git://github.com/struxoje/chiapos@main#chiapos"
     #"chiapost @ https://github.com/pechy/chiapos/releases/download/1.0.2-dev1/chiapos-1.0.2.dev1-cp37-cp37m-manylinux2010_x86_64.whl",
     "clvm==0.9.6",
     "clvm_rs==0.1.7",
