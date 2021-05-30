@@ -50,7 +50,7 @@ Write-Output "   ---"
 Write-Output "   ---"
 Write-Output "Build chiapos wheels"
 Write-Output "   ---"
-git clone https://github.com/xrobau/chiapos.git -b combined
+git clone https://github.com/struxoje/chiapos.git -b main
 pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f ".\chiapos" --wheel-dir=.\build_scripts\win_build ".\chiapos"
 
 
