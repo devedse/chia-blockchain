@@ -1,5 +1,10 @@
 from setuptools import setup
 
+import os
+
+os.environ["SETUPTOOLS_SCM_PRETEND_VERSION"] = "1.0.50"
+
+
 dependencies = [
     "blspy==1.0.2",  # Signature library
     "chiavdf==1.0.2",  # timelord and vdf verification
