@@ -1,17 +1,12 @@
 from setuptools import setup
 
-import os
-
-os.environ["SETUPTOOLS_SCM_PRETEND_VERSION"] = "1.0.50"
-
-
 dependencies = [
     "blspy==1.0.2",  # Signature library
     "chiavdf==1.0.2",  # timelord and vdf verification
     "chiabip158==1.0",  # bip158-style wallet filters
     #"chiapos==1.0.3",  # proof of space
     #"chiapos==https://github.com/pechy/chiapos/releases/download/1.0.2-dev1/chiapos-1.0.2.dev1-cp37-cp37m-manylinux2010_x86_64.whl",
-    "chiapos @ git+git://github.com/struxoje/chiapos@main#chiapos"
+    "chiapos @ git+git://github.com/struxoje/chiapos@main#egg=1.0.31"
     #"chiapost @ https://github.com/pechy/chiapos/releases/download/1.0.2-dev1/chiapos-1.0.2.dev1-cp37-cp37m-manylinux2010_x86_64.whl",
     "clvm==0.9.6",
     "clvm_rs==0.1.7",
